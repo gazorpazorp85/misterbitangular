@@ -1,0 +1,23 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .contact-form {
+    height: 50%;
+    display: flex;
+  }
+  
+  .contact-fields {
+    justify-content: center;
+
+    input {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+  }
+  
+  .contact-details-menu {
+    justify-content: space-around;
+  }

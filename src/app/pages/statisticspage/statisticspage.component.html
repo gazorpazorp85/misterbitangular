@@ -1,0 +1,7 @@
+<div *ngIf="!newMarketData">loading...</div>
+<chart *ngIf="newMarketData" 
+       [marketTableTitle]="marketTableTitle" 
+       [marketData]="newMarketData"
+       [transactionsTableTitle]="transactionsTableTitle"
+       [transactionsData]="newTransactionsData">
+</chart>

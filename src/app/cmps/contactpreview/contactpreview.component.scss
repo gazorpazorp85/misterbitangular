@@ -1,0 +1,14 @@
+.preview-container {
+  display: flex;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    padding-bottom: 10px;
+  }
+}
+
+a:hover {
+  color: #464159;
+}

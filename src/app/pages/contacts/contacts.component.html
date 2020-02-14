@@ -1,0 +1,7 @@
+<div class="flex center align-center space-between filter-bar-container">
+    <a [routerLink]="['/contacts/edit']" class="button">
+        + add contact
+    </a>
+    <filter (onFilter)="onFilter($event)"></filter>
+</div>
+<contactslist [contacts]="contacts"></contactslist>

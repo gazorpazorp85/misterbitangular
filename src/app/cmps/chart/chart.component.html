@@ -1,0 +1,18 @@
+<div *ngIf="!marketData && transactionsData">
+  loading...
+</div>
+<google-chart *ngIf="marketData" 
+  [title]="marketChart.title"
+  [type]="marketChart.type" 
+  [data]="marketChart.data" 
+  [columnNames]="marketChart.columnNames"
+  [options]="marketChart.options">
+</google-chart>
+<br><br>
+<google-chart *ngIf="transactionsData" 
+  [title]="transactionsChart.title"
+  [type]="transactionsChart.type" 
+  [data]="transactionsChart.data" 
+  [columnNames]="transactionsChart.columnNames"
+  [options]="transactionsChart.options">
+</google-chart>

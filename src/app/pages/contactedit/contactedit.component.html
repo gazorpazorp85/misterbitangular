@@ -1,0 +1,12 @@
+<div class="contact-form">
+    <img *ngIf="contact._id" src="https://robohash.org/{{contact._id}}.png" height="300" />
+    <div class="flex column contact-fields">
+        <input type="text" placeholder="enter name" [(ngModel)]="contact.name">
+        <input type="text" placeholder="enter email" [(ngModel)]="contact.email">
+        <input type="text" placeholder="enter phone" [(ngModel)]="contact.phone">
+    </div>
+</div>
+<div class="flex contact-details-menu">
+    <div (click)=(editContact()) class="capitalize button">save changes</div>
+    <div (click)=(back()) class="capitalize button">back</div>
+</div>
