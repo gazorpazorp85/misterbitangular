@@ -1,6 +1,6 @@
 <div class="container">
     <div class="uppercase title">misterbitcoin</div>
-    <div class="capitalize">welcome back {{user.name}}</div>
-    <div class="capitalize">coins: {{user.coins}}</div>
-    <div class="capitalize">bitcoin rate: {{rate}}</div>
+    <div *ngIf="user" class="capitalize">welcome back {{user.name}}</div>
+    <div *ngIf="user" class="capitalize">coins: {{user.coins}}</div>
+    <div *ngIf="user" class="capitalize">bitcoin rate: {{rate}}$</div>
 </div>

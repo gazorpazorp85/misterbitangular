@@ -6,9 +6,27 @@
 
   img {
     padding-bottom: 10px;
+    height: 100px;
   }
 }
 
 a:hover {
   color: #464159;
+}
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 575px) {
+  .preview-container {
+    display: flex;
+    font-size: 1.25rem;
+    align-items: center;
+    justify-content: center;
+  
+    img {
+      padding-bottom: 10px;
+      height: 50px;
+    }
+  }
 }

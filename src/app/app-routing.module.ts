@@ -5,15 +5,17 @@ import { ContactdetailsComponent } from './pages/contactdetails/contactdetails.c
 import { StatisticspageComponent } from './pages/statisticspage/statisticspage.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ContacteditComponent } from './pages/contactedit/contactedit.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
     { path: 'contacts', component: ContactsComponent },
     { path: 'contacts/edit', component: ContacteditComponent },
     { path: 'contacts/:id', component: ContactdetailsComponent },
     { path: 'contacts/edit/:id', component: ContacteditComponent },
+    { path: 'signup', component: SignupComponent },
     { path: 'statistics', component: StatisticspageComponent },
-    { path: 'main', component: HomepageComponent },
-    { path: '', redirectTo: '/main', pathMatch: 'full' }
+    { path: 'home', component: HomepageComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({

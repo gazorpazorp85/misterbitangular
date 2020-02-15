@@ -1,5 +1,5 @@
 export default class MoveModel {
 
-    constructor(public toId:string, public to:string, public at:number, public amount:number) {
+    constructor(public toId:string = '', public to:string = '', public at:number = 0, public amount:number = 0) {
     }
 }

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { ContactdetailsComponent } from './pages/contactdetails/contactdetails.component';
@@ -18,6 +19,10 @@ import { FilterComponent } from './cmps/filter/filter.component';
 import { ContactNavBarComponent } from './cmps/contact-nav-bar/contact-nav-bar.component';
 import { ChartComponent } from './cmps/chart/chart.component';
 import { FooterComponent } from './cmps/footer/footer.component';
+import { LoadingscreenComponent } from './cmps/loadingscreen/loadingscreen.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from './pages/signup/signup.component';
+import { TransferfundComponent } from './cmps/transferfund/transferfund.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +37,19 @@ import { FooterComponent } from './cmps/footer/footer.component';
     StatisticspageComponent,
     HomepageComponent,
     ContacteditComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingscreenComponent,
+    SignupComponent,
+    TransferfundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

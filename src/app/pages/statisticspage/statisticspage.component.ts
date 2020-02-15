@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BitcoinService } from '../../services/bitcoinservice/bitcoin.service';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'statisticspage',
@@ -17,7 +18,7 @@ export class StatisticspageComponent implements OnInit {
 
   ngOnInit(): void {
     this.BitcoinService.getMarketPrice()
-      .subscribe(result => this.filterMarketData(result))
+      .subscribe(result => this.filterMarketData(result));
     this.BitcoinService.getConfirmedTransactions()
       .subscribe(result => this.filterTransactionsData(result));
   }

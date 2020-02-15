@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactService } from '../../services/contactservice/contact.service';
+import { Router } from '@angular/router';
+
 import ContactModel from '../../models/contact.model';
 import FilterByModel from '../../models/filterBy.model';
+import UserModel from 'src/app/models/user.model';
+
+import { ContactService } from '../../services/contactservice/contact.service';
+import { UserService } from '../../services/userservice/user.service';
+import { fromEventPattern } from 'rxjs';
 
 @Component({
   selector: 'contacts',
@@ -11,9 +17,12 @@ import FilterByModel from '../../models/filterBy.model';
 export class ContactsComponent implements OnInit {
 
   contacts: ContactModel[] = [];
-  filterBy: FilterByModel = {term: ''};
+  user: UserModel = this.UserService.getUser();
+  filterBy: FilterByModel = { term: '' };
 
-  constructor(public ContactService: ContactService) { }
+  constructor(public ContactService: ContactService,
+              private UserService: UserService,
+              private router: Router) { }
 
   onFilter(event): void {
     this.filterBy.term = event.target.value;
@@ -21,6 +30,7 @@ export class ContactsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.user) this.router.navigate(['signup']);
     this.ContactService.query(this.filterBy);
     this.ContactService.contacts$.subscribe((contacts) => this.contacts = contacts);
   }

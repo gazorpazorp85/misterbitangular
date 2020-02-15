@@ -1,3 +1,31 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$misterbitcoin-angular-primary: mat-palette($mat-indigo);
+$misterbitcoin-angular-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$misterbitcoin-angular-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$misterbitcoin-angular-theme: mat-light-theme($misterbitcoin-angular-primary, $misterbitcoin-angular-accent, $misterbitcoin-angular-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($misterbitcoin-angular-theme);
+
 html,
 body {
   background-color: #464159;
@@ -118,11 +146,12 @@ p {
   text-align: center;
   height: 37px;
   line-height: 37px;
-  border-radius: 20px;
+  border-radius: 50px;
   border: 1px solid #8bbabb;
   margin: 10px;
   padding: 5px 10px;
   cursor: pointer;
+  min-width: 120px;
 }
 
 .button:hover {
@@ -132,10 +161,10 @@ p {
 
 input {
   text-indent: 5px;
-  width: 18rem;
+  min-width: 18rem;
   height: 45px;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid #8bbabb;
   color: #8bbabb;
   font-family: inherit;
@@ -146,21 +175,22 @@ input {
 ::-webkit-input-placeholder {
   color: #8bbabb;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  background-color: #5f5e5e;
+  background-color: #8bbabb;
 }
 
 ::-webkit-scrollbar {
   width: 12px;
-  background-color: #f5f5f5;
+  background-color: #464159;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #292929;
+  background-color: #6c7b95;
 }

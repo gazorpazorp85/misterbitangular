@@ -16,3 +16,16 @@
 .contact-card:hover {
   background-color: #8bbabb;
 }
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 575px) {
+  .contact-card {
+    border: 1px solid #8bbabb;
+    border-radius: 20px;
+    margin: 7px;
+    padding: 7px;
+    width: 100%;
+  }
+}

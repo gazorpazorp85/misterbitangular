@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
+
 import ContactModel from '../../models/contact.model';
 import FilterByModel from '../../models/filterBy.model';
+
+import { UtilsService } from '../utilsservice/utils.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
 
-  CONTACTS = [new ContactModel('5a56640269f443a5d64b32ca', 'Ochoa Hyde', 'ochoahyde@renovize.com', '+1 (968) 593-3824'),
+  KEY = 'contacts';
+  CONTACTS = this.UtilsService.load(this.KEY) || [new ContactModel('5a56640269f443a5d64b32ca', 'Ochoa Hyde', 'ochoahyde@renovize.com', '+1 (968) 593-3824'),
   new ContactModel('5a5664025f6ae9aa24a99fde', 'Hallie Mclean', 'halliemclean@renovize.com', '+1 (948) 464-2888'),
   new ContactModel('5a56640252d6acddd183d319', 'Parsons Norris', 'parsonsnorris@renovize.com', '+1 (958) 502-3495'),
   new ContactModel('5a566402ed1cf349f0b47b4d', 'Rachel Lowe', 'rachellowe@renovize.com', '+1 (911) 475-2312'),
@@ -31,7 +35,7 @@ export class ContactService {
   _contacts$ = new BehaviorSubject<Array<ContactModel>>([]);
   contacts$ = this._contacts$.asObservable();
 
-  constructor() { }
+  constructor(private UtilsService: UtilsService) { }
 
   public query(filterBy: FilterByModel): void {
     let contacts = this._contacts;
@@ -40,31 +44,33 @@ export class ContactService {
   }
 
   public getContactById(id: string): Observable<ContactModel> {
-    let contact = this._contacts.find(contact => contact._id === id)
-    contact = { ...contact }
-    return contact ? of(contact) : throwError(`Contact id ${id} not found!`)
+    let contact = this._contacts.find(contact => contact._id === id);
+    contact = { ...contact };
+    return contact ? of(contact) : throwError(`Contact id ${id} not found!`);
   }
 
   public deleteContact(id: string) {
-    this._contacts = this._contacts.filter(contact => contact._id !== id)
-    this._contacts$.next(this._contacts)
+    this._contacts = this._contacts.filter(contact => contact._id !== id);
+    this._contacts$.next(this._contacts);
+    this.UtilsService.store(this.KEY, this._contacts);
   }
 
   public saveContact(contact: ContactModel) {
-    return contact._id ? this._updateContact(contact) : this._addContact(contact)
+    return contact._id ? this._updateContact(contact) : this._addContact(contact);
   }
 
   private _updateContact(contact: ContactModel) {
-    this._contacts = this._contacts.map(c => contact._id === c._id ? contact : c)
-    this._contacts$.next(this._sort(this._contacts))
+    this._contacts = this._contacts.map(c => contact._id === c._id ? contact : c);
+    this._contacts$.next(this._sort(this._contacts));
+    this.UtilsService.store(this.KEY, this._contacts);
   }
 
   private _addContact(contact: ContactModel) {
-    contact._id = this._setId();
-    console.log('service ', contact);
+    contact._id = this.UtilsService.setId();
     const newContact = new ContactModel(contact._id, contact.name, contact.email, contact.phone);
     this._contacts.push(newContact);
     this._contacts$.next(this._sort(this._contacts));
+    this.UtilsService.store(this.KEY, this._contacts);
   }
 
   private _filter(term, contacts) {
@@ -84,16 +90,6 @@ export class ContactService {
       if (nameA > nameB) return 1;
       return 0;
     })
-  }
-
-  private _setId(): string {
-    var txt = ''
-    let length = 10;
-    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    for (let i = 0; i < length; i++) {
-      txt += possible.charAt(Math.floor(Math.random() * possible.length))
-    }
-    return txt
   }
 }
 

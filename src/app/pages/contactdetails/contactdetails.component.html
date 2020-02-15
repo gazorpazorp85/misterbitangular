@@ -1,13 +1,14 @@
-<div class="contact-details">
-    <div>
-        <img src="https://robohash.org/{{contact._id}}.png" height="300" />
-    </div>
+<div class="flex center contact-details">
+
+        <img src="https://robohash.org/{{contact._id}}.png" />
+
     <div class="contact-info">
         <div><span class="capitalize">name: </span>{{contact.name}}</div>
         <div><span class="capitalize">e-mail: </span>{{contact.email}}</div>
         <div><span class="capitalize">phone: </span>{{contact.phone}}</div>
     </div>
 </div>
+<transferfund *ngIf="contact" [contact]="contact"></transferfund>
 <div class="flex contact-details-menu">
     <a [routerLink]="['/contacts']" class="capitalize button">
         go back to list

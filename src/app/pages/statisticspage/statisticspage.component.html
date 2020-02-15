@@ -1,7 +1,11 @@
-<div *ngIf="!newMarketData">loading...</div>
-<chart *ngIf="newMarketData" 
+<div *ngIf="!newMarketData && !marketTableTitle && !newTransactionsData && !transactionsTableTitle">
+       <loadingscreen></loadingscreen>
+</div>
+<div class="chart-container">
+<chart *ngIf="newMarketData && newMarketData && newTransactionsData && transactionsTableTitle" 
        [marketTableTitle]="marketTableTitle" 
        [marketData]="newMarketData"
        [transactionsTableTitle]="transactionsTableTitle"
        [transactionsData]="newTransactionsData">
 </chart>
+</div>
