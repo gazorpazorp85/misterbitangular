@@ -14,10 +14,10 @@ export class BitcoinService {
   }
 
   getMarketPrice() {
-    return this.http.get<any>(`https://api.blockchain.info/charts/market-price?timespan=1months&format=json&cors=true`);
+    return this.http.get<any>(`https://api.blockchain.info/charts/market-price?timespan=2months&format=json&cors=true`);
   }
 
   getConfirmedTransactions() {
-    return this.http.get<any>(`https://api.blockchain.info/charts/n-transactions?timespan=30days&format=json&cors=true`);
+    return this.http.get<any>(`https://api.blockchain.info/charts/n-transactions?timespan=2months&format=json&cors=true`);
   }
 }

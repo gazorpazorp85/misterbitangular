@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
 import ContactModel from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contactservice/contact.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'contactedit',
@@ -11,18 +12,19 @@ import { Location } from '@angular/common';
 })
 export class ContacteditComponent implements OnInit {
 
+  @ViewChild(NgForm, { static: true }) form: NgForm;
   contact: ContactModel;
+  id: string = '';
 
   constructor(private route: ActivatedRoute,
-    private location: Location,
     private router: Router,
     public ContactService: ContactService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      const id = params.get('id');
-      (id) ?
-        this.ContactService.getContactById(id).subscribe((contact) => { this.contact = contact }) :
+      this.id = params.get('id');
+      (this.id) ?
+        this.ContactService.getContactById(this.id).subscribe((contact) => { this.contact = contact }) :
         this.contact = new ContactModel();
     })
   }
@@ -33,6 +35,7 @@ export class ContacteditComponent implements OnInit {
   }
 
   back(): void {
-    this.location.back();
+    (this.id) ? this.router.navigate(['contacts/', this.contact._id]) :
+      this.router.navigate(['contacts/']);
   }
 }

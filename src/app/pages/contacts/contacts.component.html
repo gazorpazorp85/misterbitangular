@@ -4,4 +4,4 @@
     </a>
     <filter (onFilter)="onFilter($event)"></filter>
 </div>
-<contactslist [contacts]="contacts"></contactslist>
+<contactslist [contacts]="contacts$ | async"></contactslist>

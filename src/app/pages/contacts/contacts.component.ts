@@ -7,7 +7,7 @@ import UserModel from 'src/app/models/user.model';
 
 import { ContactService } from '../../services/contactservice/contact.service';
 import { UserService } from '../../services/userservice/user.service';
-import { fromEventPattern } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'contacts',
@@ -16,7 +16,7 @@ import { fromEventPattern } from 'rxjs';
 })
 export class ContactsComponent implements OnInit {
 
-  contacts: ContactModel[] = [];
+  contacts$: Observable<ContactModel[]>;
   user: UserModel = this.UserService.getUser();
   filterBy: FilterByModel = { term: '' };
 
@@ -32,7 +32,6 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
     if (!this.user) this.router.navigate(['signup']);
     this.ContactService.query(this.filterBy);
-    this.ContactService.contacts$.subscribe((contacts) => this.contacts = contacts);
+    this.contacts$ = this.ContactService.contacts$;
   }
-
 }

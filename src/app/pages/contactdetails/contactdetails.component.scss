@@ -4,12 +4,10 @@
   height: 100%;
   max-width: 70%;
   padding: 10px;
-  // margin-left: 20px;
-  // margin-right: 20px;
 }
 
 .contact-details {
-  height: 50%;
+  height: 43%;
   display: flex;
   width: 100%;
 
@@ -35,6 +33,10 @@
   width: 100%;
 }
 
+.transfer-moves-container {
+  margin: 20px 0;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
 }
@@ -44,6 +46,7 @@
   :host {
     max-width: 100%;
     width: 100%;
+    padding: 0;
   }
 
   .contact-details {
@@ -77,5 +80,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+  }
+
+  .transfer-moves-container {
+    flex-direction: column;
+    margin: 20px 0;
   }
 }

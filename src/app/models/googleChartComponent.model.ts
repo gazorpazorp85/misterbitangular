@@ -9,10 +9,8 @@ export default class GoogleChartComponent {
             {
                 curveType: 'function',
                 legend: { position: 'bottom', textStyle: { color: '#8bbabb' } },
-                // height: 500,
-                // width: 1000,
                 backgroundColor: '#464159',
-                // chartArea: { backgroundColor: 'white' },
+                chartArea: { width: "75%", height: "70%" },
                 colors: ['#8bbabb'],
                 hAxis: { textStyle: { color: '#8bbabb' } },
                 vAxis: { textStyle: { color: '#8bbabb' } },

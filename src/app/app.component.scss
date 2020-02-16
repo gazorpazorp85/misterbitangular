@@ -24,8 +24,7 @@
 }
 
 .main-container {
-  padding-right: 10px;
-  padding-left: 10px;
+  padding: 0 10px;
   flex-grow: 1;
   width: 80%;
   overflow: auto;
@@ -37,6 +36,7 @@
 
 @media screen and (max-width: 575px) {
   .main-container {
+    padding: 0;
     width: 100%;
   }
 }

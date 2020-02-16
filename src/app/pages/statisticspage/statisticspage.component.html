@@ -1,8 +1,8 @@
-<div *ngIf="!newMarketData && !marketTableTitle && !newTransactionsData && !transactionsTableTitle">
+<div *ngIf="!newMarketData && !marketTableTitle && !newTransactionsData && !transactionsTableTitle" class="flex loading-container">
        <loadingscreen></loadingscreen>
 </div>
-<div class="chart-container">
-<chart *ngIf="newMarketData && newMarketData && newTransactionsData && transactionsTableTitle" 
+<div *ngIf="newMarketData && newMarketData && newTransactionsData && transactionsTableTitle" class="chart-container">
+<chart 
        [marketTableTitle]="marketTableTitle" 
        [marketData]="newMarketData"
        [transactionsTableTitle]="transactionsTableTitle"

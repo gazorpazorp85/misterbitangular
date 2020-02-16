@@ -3,4 +3,5 @@
     <div *ngIf="user" class="capitalize">welcome back {{user.name}}</div>
     <div *ngIf="user" class="capitalize">coins: {{user.coins}}</div>
     <div *ngIf="user" class="capitalize">bitcoin rate: {{rate}}$</div>
+    <moveslist *ngIf="user" [user]="user"></moveslist>
 </div>

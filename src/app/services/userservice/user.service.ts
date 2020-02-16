@@ -36,7 +36,5 @@ export class UserService {
     this.user.coins -= amount;
     this.user.moves.unshift(newMove); 
     this.UtilsService.store(this.KEY, this.user);
-    console.log(newMove);
-    console.log(this.user);
   }
 }

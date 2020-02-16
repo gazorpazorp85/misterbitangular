@@ -1,15 +1,11 @@
-<div *ngIf="!marketData && !marketTableTitle && !transactionsData && !transactionsTableTitle">
-  <loadingscreen></loadingscreen>
-</div>
-
-  <google-chart *ngIf="marketData && marketTableTitle" 
-    [title]="marketChart.title"
-    [type]="marketChart.type" 
-    [data]="marketChart.data" 
-    [columnNames]="marketChart.columnNames"
-    [options]="marketChart.options"
-    style="width:100%; height:650px">
-  </google-chart>
+<google-chart *ngIf="marketData && marketTableTitle" 
+  [title]="marketChart.title"
+  [type]="marketChart.type" 
+  [data]="marketChart.data" 
+  [columnNames]="marketChart.columnNames"
+  [options]="marketChart.options"
+  style="width:100%; height:100%">
+</google-chart>
 
 
 <google-chart *ngIf="transactionsData && transactionsTableTitle" 
@@ -18,5 +14,5 @@
   [data]="transactionsChart.data" 
   [columnNames]="transactionsChart.columnNames"
   [options]="transactionsChart.options"
-  style="width:100%; height:650px">
+  style="width:100%; height:100%">
 </google-chart>
