@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BitcoinService } from '../../services/bitcoinservice/bitcoin.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'statisticspage',
@@ -23,31 +24,21 @@ export class StatisticspageComponent implements OnInit {
   }
 
   filterMarketData(result): void {
-    this.newMarketData = result.values.map(value => {
-      const options = { year: '2-digit', month: '2-digit', day: '2-digit' };
-      let date = new Date(value.x * 1000).toLocaleDateString(undefined, options);
-      let bitCoinRate = value.y;
-      return this.newMarketData = [date, bitCoinRate];
-    })
+    this.newMarketData = this._filterData(result);
     this.marketTableTitle = result.name + ' - ' + result.description;
   }
 
   filterTransactionsData(result): void {
-    this.newTransactionsData = result.values.map(value => {
-      const options = { year: '2-digit', month: '2-digit', day: '2-digit' };
-      let date = new Date(value.x * 1000).toLocaleDateString(undefined, options);
-      let transactionsRate = value.y;
-      return this.newTransactionsData = [date, transactionsRate]
-    })
+    this.newTransactionsData = this._filterData(result);
     this.transactionsTableTitle = result.name + ' - ' + result.description;
   }
 
-  // filterData(result, newData, tableTitle) {
-  //   newData = result.values.map(value => {
-  //     let x = new Date(value.x * 1000).toLocaleDateString();
-  //     let y = value.y;
-  //     return newData = [x, y]
-  //   })
-  //   tableTitle = result.name + ' - ' + result.description;
-  // }
+  _filterData(result) {
+    return result.values.map(value => {
+      const options = { year: '2-digit', month: '2-digit', day: '2-digit' };
+      let date = new Date(value.x * 1000).toLocaleDateString(undefined, options);
+      let bitCoinRate = value.y;
+      return [date, bitCoinRate];
+    })
+  }
 }

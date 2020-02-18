@@ -31,6 +31,7 @@ export class ContactService {
   new ContactModel('5a56640298500fead8cb1ee5', 'Grace James', 'gracejames@renovize.com', '+1 (959) 525-2529'),
   new ContactModel('5a56640243427b8f8445231e', 'Tanner Gates', 'tannergates@renovize.com', '+1 (978) 591-2291'),
   new ContactModel('5a5664025c3abdad6f5e098c', 'Lilly Conner', 'lillyconner@renovize.com', '+1 (842) 587-3812')]
+ 
   _contacts: ContactModel[] = this.CONTACTS;
   _contacts$ = new BehaviorSubject<Array<ContactModel>>([]);
   contacts$ = this._contacts$.asObservable();
