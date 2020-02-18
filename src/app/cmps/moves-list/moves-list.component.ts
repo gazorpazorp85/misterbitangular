@@ -20,10 +20,16 @@ export class MoveslistComponent implements OnInit {
   ngOnInit(): void {
     if (!this.contact) this.contact = new ContactModel();
     this.getLastTransfers(this.user);
-    this.isTransfersMade = this.isEmpty(this.user, this.contact);
+    this.isTransfersMade = this.isMoveMade(this.user, this.contact);
   }
 
-  isEmpty(user: UserModel, contact: ContactModel): boolean {
+  ngOnChanges(): void {
+    if (this.contact) {
+      this.isTransfersMade = this.isMoveMade(this.user, this.contact);
+    }
+  }
+
+  isMoveMade(user: UserModel, contact: ContactModel): boolean {
     if (user.moves.length === 0) {
       return true
     } else {

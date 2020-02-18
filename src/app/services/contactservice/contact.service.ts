@@ -38,7 +38,7 @@ export class ContactService {
 
   constructor(private UtilsService: UtilsService) { }
 
-  public query(filterBy: FilterByModel): void {
+  public loadContacts(filterBy: FilterByModel): void {
     let contacts = this._contacts;
     contacts = this._filter(filterBy.term, contacts);
     this._contacts$.next(this._sort(contacts));

@@ -13,54 +13,44 @@ import { UtilsService } from '../utilsservice/utils.service';
 
 export class UserService {
 
-  KEY = 'user';
-  user = this.UtilsService.load(this.KEY);
-
-  // private _user: UserModel;
-  // private _user$ = new BehaviorSubject<UserModel>(null);
-  // public user$ = this._user$.asObservable;
+  private KEY = 'user';
+  private _user: UserModel;
+  private _user$ = new BehaviorSubject<UserModel>(this.UtilsService.load(this.KEY) || null);
+  public user$ = this._user$.asObservable();
 
   constructor(private UtilsService: UtilsService) { }
 
   public signup(name: string): void {
-    var newUser = new UserModel();
-    newUser.name = name;
-    this.UtilsService.store(this.KEY, newUser);
-    this.user = newUser;
+    let user = this.UtilsService.load(this.KEY);
+    if (!user) {
+      let newUser = new UserModel();
+      newUser.name = name;
+      this.UtilsService.store(this.KEY, newUser);
+      this._user = newUser;
+    }
+    this._user$.next(this._user);
   }
 
-  public getUser(): UserModel {
-    return this.user;
+  public getUser() {
+    return this.user$;
   }
 
   public addMove(contact: ContactModel, amount: number): void {
-    var newMove = new MoveModel();
+
+    let newMove = new MoveModel();
     newMove.toId = this.UtilsService.setId();
     newMove.to = contact.name;
     newMove.at = Date.now();
     newMove.amount = amount;
-    this.user.coins -= amount;
-    this.user.moves.unshift(newMove);
-    this.UtilsService.store(this.KEY, this.user);
+    const editedUser = { ...this._user$.value };
+    editedUser.coins -= amount;
+    editedUser.moves.unshift(newMove);
+    this.UtilsService.store(this.KEY, editedUser);
+    this._user$.next(editedUser);
   }
 
   public isAuthenticated(): boolean {
-    return (this.user) ? true : false;
+    const user = this._user$.getValue;
+    return (user) ? true : false;
   }
-
-  // signup(name: string): void {
-  //   let user = this.UtilsService.load(this.KEY);
-  //   if (!user) {
-  //     var newUser = new UserModel();
-  //     newUser.name = name;
-  //     this.UtilsService.store(this.KEY, newUser);
-  //     this.user = newUser;
-  //   }
-  //   this._user$.next(this._user);
-  // }
-
-  // getUser() {
-  //   return this.user$;
-  // }
-
 }

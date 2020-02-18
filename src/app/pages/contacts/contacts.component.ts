@@ -21,11 +21,11 @@ export class ContactsComponent implements OnInit {
 
   onFilter(event): void {
     this.filterBy.term = event.target.value;
-    this.ContactService.query(this.filterBy);
+    this.ContactService.loadContacts(this.filterBy);
   }
 
   ngOnInit(): void {
-    this.ContactService.query(this.filterBy);
+    this.ContactService.loadContacts(this.filterBy);
     this.contacts$ = this.ContactService.contacts$;
   }
 }

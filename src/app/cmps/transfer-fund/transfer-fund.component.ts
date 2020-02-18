@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { ContactModel } from 'src/app/models/contact.model';
 import { UserModel } from 'src/app/models/user.model';
@@ -14,15 +15,20 @@ import { UserService } from '../../services/userservice/user.service';
 export class TransferfundComponent implements OnInit {
 
   amount: number;
-  user: UserModel = this.UserService.getUser();
-  // user$: this.UserService.getUser();
+  user: UserModel;
+  userSubscriber: Subscription;
 
   @Input() contact: ContactModel;
 
   constructor(private UserService: UserService,
-    private router: Router) { }
+              private router: Router) { }
 
   ngOnInit(): void {
+    this.userSubscriber = this.UserService.user$.subscribe(user => this.user = user);
+  }
+
+  ngOnDestroy() {
+    this.userSubscriber.unsubscribe();
   }
 
   onTransferCoins(): void {

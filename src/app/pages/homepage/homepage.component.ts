@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from '../../models/user.model';
+import { Subscription } from 'rxjs';
+
 import { UserService } from '../../services/userservice/user.service';
 import { BitcoinService } from '../../services/bitcoinservice/bitcoin.service';
+
+import { UserModel } from '../../models/user.model';
 
 @Component({
   selector: 'homepage',
@@ -11,13 +14,19 @@ import { BitcoinService } from '../../services/bitcoinservice/bitcoin.service';
 export class HomepageComponent implements OnInit {
 
   user: UserModel;
+  userSubscriber: Subscription;
   isContactsShown: boolean;
   rate: number;
 
   constructor(private UserService: UserService, private BitcoinService: BitcoinService) { }
 
   ngOnInit(): void {
-    this.user = this.UserService.getUser();
+    this.userSubscriber = this.UserService.user$.subscribe(user => this.user = user);
     this.BitcoinService.getBitCoinRate().subscribe((rate) => this.rate = +(1 / rate).toFixed(2));
   }
+
+  ngOnDestroy() {
+    this.userSubscriber.unsubscribe();
+  }
+
 }
