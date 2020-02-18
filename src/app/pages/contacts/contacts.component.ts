@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import ContactModel from '../../models/contact.model';
-import FilterByModel from '../../models/filterBy.model';
+import { ContactModel } from '../../models/contact.model';
+import { FilterByModel } from '../../models/filterBy.model';
 
 import { ContactService } from '../../services/contactservice/contact.service';
 import { Observable } from 'rxjs';

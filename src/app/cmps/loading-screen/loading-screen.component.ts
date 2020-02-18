@@ -4,8 +4,8 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'loadingscreen',
-  templateUrl: './loadingscreen.component.html',
-  styleUrls: ['./loadingscreen.component.scss']
+  templateUrl: './loading-screen.component.html',
+  styleUrls: ['./loading-screen.component.scss']
 })
 export class LoadingscreenComponent {
 

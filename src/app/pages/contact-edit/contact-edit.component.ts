@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import ContactModel from 'src/app/models/contact.model';
+import { ContactModel } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contactservice/contact.service';
 
 @Component({
   selector: 'contactedit',
-  templateUrl: './contactedit.component.html',
-  styleUrls: ['./contactedit.component.scss']
+  templateUrl: './contact-edit.component.html',
+  styleUrls: ['./contact-edit.component.scss']
 })
 export class ContacteditComponent implements OnInit {
 

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import UserModel from '../../models/user.model';
-import ContactModel from 'src/app/models/contact.model';
-import MoveModel from 'src/app/models/move.model';
+import { UserModel } from '../../models/user.model';
+import { ContactModel } from 'src/app/models/contact.model';
+import { MoveModel } from 'src/app/models/move.model';
 
 import { UtilsService } from '../utilsservice/utils.service';
 

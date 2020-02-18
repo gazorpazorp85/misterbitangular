@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import ContactModel from '../../models/contact.model';
-import UserModel from 'src/app/models/user.model';
+import { ContactModel } from '../../models/contact.model';
+import { UserModel } from 'src/app/models/user.model';
 
 import { ContactService } from '../../services/contactservice/contact.service';
 import { UserService } from '../../services/userservice/user.service';
 
 @Component({
   selector: 'contactdetails',
-  templateUrl: './contactdetails.component.html',
-  styleUrls: ['./contactdetails.component.scss']
+  templateUrl: './contact-details.component.html',
+  styleUrls: ['./contact-details.component.scss']
 })
 export class ContactdetailsComponent implements OnInit {
 

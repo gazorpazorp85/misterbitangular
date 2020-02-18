@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import UserModel from '../../models/user.model';
+import { UserModel } from '../../models/user.model';
 import { UserService } from '../../services/userservice/user.service';
 import { BitcoinService } from '../../services/bitcoinservice/bitcoin.service';
 

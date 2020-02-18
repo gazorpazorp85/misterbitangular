@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import UserModel from 'src/app/models/user.model';
+import { UserModel } from 'src/app/models/user.model';
 
 import { UserService } from '../../services/userservice/user.service';
 
@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   user: UserModel;
 
   constructor(public UserService: UserService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.user = new UserModel();

@@ -1,4 +1,4 @@
-export default class FilterByModel {
+export class FilterByModel {
 
     constructor(public term:string) {
     }

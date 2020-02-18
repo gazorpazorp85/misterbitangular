@@ -1,25 +1,26 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import ContactModel from 'src/app/models/contact.model';
-import UserModel from 'src/app/models/user.model';
+import { ContactModel } from 'src/app/models/contact.model';
+import { UserModel } from 'src/app/models/user.model';
 
 import { UserService } from '../../services/userservice/user.service';
 
 @Component({
   selector: 'transferfund',
-  templateUrl: './transferfund.component.html',
-  styleUrls: ['./transferfund.component.scss']
+  templateUrl: './transfer-fund.component.html',
+  styleUrls: ['./transfer-fund.component.scss']
 })
 export class TransferfundComponent implements OnInit {
 
   amount: number;
   user: UserModel = this.UserService.getUser();
+  // user$: this.UserService.getUser();
 
   @Input() contact: ContactModel;
 
   constructor(private UserService: UserService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
   }

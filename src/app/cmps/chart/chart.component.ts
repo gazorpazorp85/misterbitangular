@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import GoogleChartInterface from '../../models/googleChartComponent.model';
+import { GoogleChartModel } from '../../models/googleChart.model';
 
 @Component({
   selector: 'chart',
@@ -8,8 +8,8 @@ import GoogleChartInterface from '../../models/googleChartComponent.model';
 })
 export class ChartComponent implements OnInit, OnChanges {
 
-  marketChart = new GoogleChartInterface();
-  transactionsChart = new GoogleChartInterface();
+  marketChart = new GoogleChartModel();
+  transactionsChart = new GoogleChartModel();
   @Input() marketData: any = [];
   @Input() marketTableTitle: string;
   @Input() transactionsData: any = [];

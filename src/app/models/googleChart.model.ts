@@ -1,4 +1,4 @@
-export default class GoogleChartComponent {
+export class GoogleChartModel {
 
     constructor(
         public title: string = '',

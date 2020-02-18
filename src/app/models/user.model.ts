@@ -1,7 +1,7 @@
-import MoveModel from './move.model';
+import { MoveModel } from './move.model';
 
-export default class UserModel {
+export class UserModel {
 
-    constructor(public name:string = '', public coins:number = 100, public moves:MoveModel[] = []) {
+    constructor(public name: string = '', public coins: number = 100, public moves: MoveModel[] = []) {
     }
 }

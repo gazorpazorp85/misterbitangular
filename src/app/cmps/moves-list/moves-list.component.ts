@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import UserModel from 'src/app/models/user.model';
-import ContactModel from 'src/app/models/contact.model';
+import { UserModel } from 'src/app/models/user.model';
+import { ContactModel } from 'src/app/models/contact.model';
 
 @Component({
   selector: 'moveslist',
-  templateUrl: './moveslist.component.html',
-  styleUrls: ['./moveslist.component.scss']
+  templateUrl: './moves-list.component.html',
+  styleUrls: ['./moves-list.component.scss']
 })
 export class MoveslistComponent implements OnInit {
 

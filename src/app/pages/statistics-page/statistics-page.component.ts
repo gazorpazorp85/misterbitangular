@@ -4,8 +4,8 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'statisticspage',
-  templateUrl: './statisticspage.component.html',
-  styleUrls: ['./statisticspage.component.scss']
+  templateUrl: './statistics-page.component.html',
+  styleUrls: ['./statistics-page.component.scss']
 })
 export class StatisticspageComponent implements OnInit {
 
