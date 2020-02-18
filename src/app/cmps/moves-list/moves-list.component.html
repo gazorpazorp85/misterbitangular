@@ -6,7 +6,7 @@
         <span class="capitalize">coins transfered: {{move.amount}}</span>
     </div>
 </div>
-<div *ngIf="isTransfersMade" class="capitalize notransfers-container">
+<div *ngIf="isTransfersMade && contact._id" class="capitalize notransfers-container">
     no transfers have been made to this contact
 </div>
 <div *ngIf="isTransfersMade && !contact" class="capitalize notransfers-container">
